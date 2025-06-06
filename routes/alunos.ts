@@ -11,13 +11,14 @@ const alunoSchema = z.object({
   nome: z.string().min(10, { message: "Nome deve possuir, no mínimo, 10 caracteres" }),
   matricula: z.string().min(3, { message: "Matrícula deve possuir, no mínimo, 3 caracteres" }),
   curso: z.string(),
-  saldo: z.number().optional()
+  saldo: z.number().optional(),
+  email: z.string().email({ message: "E-mail inválido" })
 })
 
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.mailtrap.io",
-  port: 2525,
+  host: "sandbox.smtp.mailtrap.io",
+  port: 587,
   auth: {
     user: "b0ffd7ab33a38e",  
     pass: "8664734be871dc",    
@@ -115,7 +116,7 @@ router.post("/", async (req, res) => {
     return res.status(400).json({ erro: valida.error })
   }
 
-  const { nome, matricula, curso, saldo } = valida.data
+  const { nome, matricula, curso, saldo, email } = valida.data
 
   try {
     const aluno = await prisma.aluno.create({
@@ -123,7 +124,8 @@ router.post("/", async (req, res) => {
         nome, 
         matricula, 
         curso: curso,
-        saldo: saldo ?? 0  
+        email,  
+        saldo: saldo ?? 0,
       }
     })
     res.status(201).json(aluno)
@@ -156,12 +158,12 @@ router.put("/:id", async (req, res) => {
     return
   }
 
-  const { nome, matricula, curso, saldo } = valida.data
+  const { nome, matricula, curso, saldo, email } = valida.data
 
   try {
     const aluno = await prisma.aluno.update({
       where: { id: Number(id) },
-      data: { nome, matricula, curso, saldo }
+      data: { nome, matricula, curso, saldo, email }
     })
     res.status(200).json(aluno)
   } catch (error) {
@@ -192,9 +194,13 @@ router.get("/email/:id", async (req, res) => {
 
     
 
-    // Enviar e-mail com relatório dos empréstimos ativos
-    const email = "responsavel@escola.com";
-    await enviaEmail(aluno, email);
+    if (!aluno.email) {
+      return res.status(400).json({ erro: "Aluno não possui e-mail cadastrado" });
+    }
+
+  
+    await enviaEmail(aluno, aluno.email);
+
 
     res.status(200).json({ mensagem: "Relatório enviado com sucesso", aluno });
   } catch (error) {

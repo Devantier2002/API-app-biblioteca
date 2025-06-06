@@ -30,6 +30,7 @@ model Aluno {
   matricula   String       @unique
   curso       String?
   saldo       Decimal      @db.Decimal(10, 2) 
+  email       String
   emprestimos Emprestimo[] 
   @@map("alunos")
 }
