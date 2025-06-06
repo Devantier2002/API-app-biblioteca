@@ -1,5 +1,8 @@
-📚 Biblioteca Escolar API - Documentação Completa
-API REST para gerenciamento de alunos, livros e empréstimos em uma biblioteca escolar. Desenvolvida com Node.js, Express, Prisma, Zod e Nodemailer para envio de relatórios por e-mail.
+# 📚 Biblioteca Escolar API - Documentação Completa
+
+> **API REST para gerenciamento de alunos, livros e empréstimos em uma biblioteca escolar.  
+> Desenvolvida com Node.js, Express, Prisma, Zod e Nodemailer para envio de relatórios por e-mail.**
+
 
 
 🛠️ Funcionalidades da API
