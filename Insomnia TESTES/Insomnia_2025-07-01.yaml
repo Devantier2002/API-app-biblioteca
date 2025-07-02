@@ -1,0 +1,480 @@
+type: collection.insomnia.rest/5.0
+name: My first collection
+meta:
+  id: wrk_68824d60573b44ed9cd21ded0b2d4056
+  created: 1748649861003
+  modified: 1748649861003
+collection:
+  - name: Alunos
+    meta:
+      id: fld_ac882c41e9f34c9bb61ad53955dc7471
+      created: 1748649932538
+      modified: 1748649932538
+      sortKey: -1748649932538
+    children:
+      - url: localhost:3000/alunos
+        name: Listar Alunos
+        meta:
+          id: req_96522c1e679b4db5a14a6ec3ac7d129e
+          created: 1748649935944
+          modified: 1749176238118
+          isPrivate: false
+          sortKey: -1748649935944
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/alunos
+        name: Cadastrar Aluno
+        meta:
+          id: req_222f8b8392484267a51a05095eb2b4ea
+          created: 1748650268670
+          modified: 1751422071521
+          isPrivate: false
+          sortKey: -1748650268670
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Lucas da Silva",
+              "turma": "7A",
+              "responsavel": "João da Silva",
+              "email": "devantier2002@example.com",
+              "obs": "Aluno com alergia a amendoim"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_e4d46f5ddbce49a58c58dfff7e04f8be
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_26ef21d9c262450392a9a4f5f3b0ed1c
+          - id: pair_ddde1fde8a2e401e8ac1fe99278f81f6
+            name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTG9nYWRvSWQiOiJjZWE1N2QwOC00NTRhLTRmMjEtYTkxNi1kZTMxNjJjNTAzNDAiLCJ1c2VyTG9nYWRvTm9tZSI6Ikx1Y2FzIERldmFudGllciIsImlhdCI6MTc1MTQyMTQ0NiwiZXhwIjoxNzUxNDI1MDQ2fQ.xkG2TTs7ZhW7LZpDgztYznbHnv4vLXg_VZIkDF7tn00
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/alunos/6
+        name: Atualizar Aluno
+        meta:
+          id: req_315b3b370d8642af81c4e7a3db7ad74b
+          created: 1748650464192
+          modified: 1749176263037
+          isPrivate: false
+          sortKey: -1748650464192
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            	{
+            		"id": 6,
+            		"nome": "Lucas Devantierrr",
+            		"matricula": "20231052",
+            		"curso": "ADS",
+            		"saldo": 250
+            	}
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/alunos/depositar/6
+        name: Deposito
+        meta:
+          id: req_da74ac0da9d04f3d883a03bd3c9da5f2
+          created: 1749176764166
+          modified: 1749177120667
+          isPrivate: false
+          sortKey: -1749176764166
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "valor": 50
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/alunos/1
+        name: Deletar
+        meta:
+          id: req_ddf51c94417e4c808132c7442c790784
+          created: 1749178848818
+          modified: 1751422136970
+          isPrivate: false
+          sortKey: -1749178848818
+        method: DELETE
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_f30e20117f804bdbaf17784292780977
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_89427ccb99f54a5dbd473b5a5642519f
+          - id: pair_7647b96dc8c84a1ca8e6a29bc541ee37
+            name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTG9nYWRvSWQiOiJjZWE1N2QwOC00NTRhLTRmMjEtYTkxNi1kZTMxNjJjNTAzNDAiLCJ1c2VyTG9nYWRvTm9tZSI6Ikx1Y2FzIERldmFudGllciIsImlhdCI6MTc1MTQyMTQ0NiwiZXhwIjoxNzUxNDI1MDQ2fQ.xkG2TTs7ZhW7LZpDgztYznbHnv4vLXg_VZIkDF7tn00
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Livros
+    meta:
+      id: fld_1f602a323c0043918b01d2ace1fd1cb2
+      created: 1748650018748
+      modified: 1748650018748
+      sortKey: -1748650018748
+    children:
+      - url: http://localhost:3000/livros
+        name: Listar Livros
+        meta:
+          id: req_d359c7bdc3b44e77a1fcc9de9e70dfc9
+          created: 1748650021281
+          modified: 1749176204192
+          isPrivate: false
+          sortKey: -1748650021281
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/livros
+        name: Adicionar Livro
+        meta:
+          id: req_99b57a9374924bb5b12da1799b586a97
+          created: 1748650049807
+          modified: 1749176196174
+          isPrivate: false
+          sortKey: -1748650049807
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "titulo": "O Verão que mudou a minha vida",
+              "autor": "J.R.R. Tolkien",
+              "preco": "50",
+              "quantidadeDisponivel": 5
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: emprestimos
+    meta:
+      id: fld_57da896c5b3f4c9eaeb3fae6e3b9ee53
+      created: 1748650339668
+      modified: 1749174541979
+      sortKey: -1748650339668
+    children:
+      - url: localhost:3000/emprestimos
+        name: Adicionar Emprestimo
+        meta:
+          id: req_d465892d9b0841c39d11b6bcda434914
+          created: 1748650341781
+          modified: 1751422500943
+          isPrivate: false
+          sortKey: -1748650341781
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "livroId": 1,
+            	"alunoId": 2
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/emprestimos/devolver/1
+        name: Devolver Livro
+        meta:
+          id: req_9f396255a5af45459f876517af827090
+          created: 1749177506707
+          modified: 1749179194667
+          isPrivate: false
+          sortKey: -1749177506707
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |
+            {
+            	"livroId": 3
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Login
+    meta:
+      id: fld_69719d241f7546018ea76994dd36d9db
+      created: 1751420669652
+      modified: 1751420669652
+      sortKey: -1751420669652
+    children:
+      - url: localhost:3000/login
+        name: Fazer Login
+        meta:
+          id: req_84a51a3a9c5b4b5aa39b1943b0b0f1af
+          created: 1751420672464
+          modified: 1751421444881
+          isPrivate: false
+          sortKey: -1751420672464
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "email": "Devantier2002@gmail.com",
+              "senha": "Senha@Forte123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Usuarios
+    meta:
+      id: fld_d0b78caef4704e0b9a14920d4d52de7e
+      created: 1751420938194
+      modified: 1751420938194
+      sortKey: -1751420938194
+    children:
+      - url: localhost:3000/usuarios
+        name: Add Usuarios
+        meta:
+          id: req_585618a1f7d8488083fb12e3be939a2e
+          created: 1751420940831
+          modified: 1751421392251
+          isPrivate: false
+          sortKey: -1751420940831
+        method: POST
+        body:
+          mimeType: application/json
+          text: |
+            {
+              "nome": "Lucas Devantier",
+              "email": "Devantier2002@gmail.com",
+              "senha": "Senha@Forte123"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/usuarios
+        name: Listar Usuarios
+        meta:
+          id: req_c1a44cce732c4d06930e81cf1e593e75
+          created: 1751421258625
+          modified: 1751421272910
+          isPrivate: false
+          sortKey: -1751421258625
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Deposito
+    meta:
+      id: fld_d632387765454695ae808e4b9256dcc4
+      created: 1751422560131
+      modified: 1751422560131
+      sortKey: -1751422560131
+    children:
+      - url: localhost:3000/depositos
+        name: New Request
+        meta:
+          id: req_97f82080e88942a3b16f2cd0b4cf98c5
+          created: 1751422641617
+          modified: 1751422648771
+          isPrivate: false
+          sortKey: -1751422641617
+        method: GET
+        body:
+          mimeType: application/json
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Mandar Email
+    meta:
+      id: fld_f515777b9b824d7b979ea2f6ce3614ca
+      created: 1751422671538
+      modified: 1751422671538
+      sortKey: -1751422671538
+    children:
+      - url: localhost:3000/alunos/email/2
+        name: New Request
+        meta:
+          id: req_6f67b90f55bf44118393e406547be43e
+          created: 1751422677072
+          modified: 1751422712134
+          isPrivate: false
+          sortKey: -1751422677072
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: localhost:3000/depositos
+    name: Depositar
+    meta:
+      id: req_15067b5c5bf8431baa4b49e6e0d62ae0
+      created: 1749174452287
+      modified: 1751422632630
+      isPrivate: false
+      sortKey: -1751421749162.5
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "alunoId": 2,
+          "tipo": "Cartao",
+          "valor": 100.50
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_91dbe2e518feead86553ff925a84e4a2031092ee
+    created: 1748649861008
+    modified: 1748649861008
+environments:
+  name: Base Environment
+  meta:
+    id: env_91dbe2e518feead86553ff925a84e4a2031092ee
+    created: 1748649861006
+    modified: 1748649861006
+    isPrivate: false

@@ -13,8 +13,60 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Usuario {
+  id        String   @db.VarChar(36) @id @default(uuid())
+  nome      String   @db.VarChar(50)
+  email     String   @db.VarChar(100) @unique()
+  senha     String   @db.VarChar(60)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  tentativasInvalidas Int     @default(0)
+  bloqueado          Boolean  @default(false)
+  alunos    Aluno[]
+  logs      Log[]
+  @@map("usuarios")
+}
+
+model Log {
+  id          Int      @id @default(autoincrement())
+  usuario     Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId   String   @db.VarChar(36)
+  descricao   String   @db.VarChar(60)
+  complemento String   @db.VarChar(200)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@map("logs")
+}
+
+model Aluno {
+  id           Int         @id @default(autoincrement())
+  nome         String      @db.VarChar(40)
+  turma        String      @db.VarChar(6)
+  obs          String?     @db.VarChar(255)
+  responsavel  String      @db.VarChar(40)
+  email        String      @db.VarChar(100)
+  saldo        Decimal     @db.Decimal(10,2) @default(0)
+  usuario      Usuario     @relation(fields: [usuarioId], references: [id])
+  usuarioId    String      @db.VarChar(36)
+  depositos    Deposito[]
+  emprestimos  Emprestimo[]
+  matricula    String?     @unique
+  curso        String?
+  @@map("alunos")
+}
+
+model Deposito {
+  id       Int      @id @default(autoincrement())
+  aluno    Aluno    @relation(fields: [alunoId], references: [id])
+  alunoId  Int
+  tipo     Tipos
+  valor    Decimal  @db.Decimal(9, 2)
+  data     DateTime @default(now())
+  @@map("depositos")
+}
+
 model Livro {
-  id                   Int      @id @default(autoincrement())
+  id                   Int           @id @default(autoincrement())
   titulo               String
   autor                String
   preco                Decimal       @db.Decimal(10, 2)
@@ -23,27 +75,28 @@ model Livro {
   @@map("livros")
 }
 
-
-model Aluno {
-  id          Int          @id @default(autoincrement())
-  nome        String
-  matricula   String       @unique
-  curso       String?
-  saldo       Decimal      @db.Decimal(10, 2) 
-  email       String
-  emprestimos Emprestimo[] 
-  @@map("alunos")
-}
-
-
 model Emprestimo {
-  id             Int      @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   livroId        Int
   alunoId        Int
   dataEmprestimo DateTime
   dataDevolucao  DateTime?
-  valor          Decimal   @db.Decimal(10, 2)  
+  valor          Decimal   @db.Decimal(10, 2)
   livro          Livro     @relation(fields: [livroId], references: [id])
   aluno          Aluno     @relation(fields: [alunoId], references: [id])
   @@map("emprestimos")
 }
+
+enum Tipos {
+  PIX
+  Cartao
+  Dinheiro
+}
+
+model RecuperacaoSenha {
+  id        Int      @id @default(autoincrement())
+  email     String
+  codigo    String
+  criadoEm  DateTime @default(now())
+}
+
