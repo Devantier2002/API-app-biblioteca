@@ -26,7 +26,7 @@ function validaSenha(senha: string): string[] {
   return erros
 }
 
-// 🔍 GET - Listar usuários
+//  GET - Listar usuários
 router.get("/", async (req, res) => {
   try {
     const usuarios = await prisma.usuario.findMany()
@@ -37,7 +37,7 @@ router.get("/", async (req, res) => {
   }
 })
 
-// ➕ POST - Criar novo usuário
+//  POST - Criar novo usuário
 router.post("/", async (req, res) => {
   const valida = usuarioSchema.safeParse(req.body)
 
@@ -65,7 +65,7 @@ router.post("/", async (req, res) => {
   }
 })
 
-// 🔄 PUT - Atualizar usuário (com nova senha criptografada)
+//  PUT - Atualizar usuário (com nova senha criptografada)
 router.put("/:id", async (req, res) => {
   const { id } = req.params
   const valida = usuarioSchema.safeParse(req.body)
@@ -95,7 +95,7 @@ router.put("/:id", async (req, res) => {
   }
 })
 
-// 🗑️ DELETE - Remover usuário
+//  DELETE - Remover usuário
 router.delete("/:id", async (req, res) => {
   const { id } = req.params
 
@@ -110,7 +110,7 @@ router.delete("/:id", async (req, res) => {
   }
 })
 
-// 🔓 PUT - Desbloquear usuário
+//  PUT - Desbloquear usuário
 router.put("/admin/desbloquear/:id", async (req, res) => {
   const { id } = req.params
 
